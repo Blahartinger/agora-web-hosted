@@ -1,1 +1,1 @@
-# agora-wed-hosted
+# agora-web-hosted
