@@ -11,7 +11,8 @@ var options = {
   appid: null,
   channel: null,
   uid: null,
-  token: null
+  token: null,
+  videoId: 0
 };
 
 // the demo can auto join channel with params in url
@@ -20,12 +21,13 @@ $(() => {
   options.appid = urlParams.get("appid");
   options.channel = urlParams.get("channel");
   options.token = urlParams.get("token");
-  if (options.appid && options.channel) {
-    $("#appid").val(options.appid);
-    $("#token").val(options.token);
-    $("#channel").val(options.channel);
-    $("#join-form").submit();
-  }
+  join();
+//  if (options.appid && options.channel) {
+//    $("#appid").val(options.appid);
+//    $("#token").val(options.token);
+//    $("#channel").val(options.channel);
+//    $("#join-form").submit();
+//  }
 })
 
 $("#join-form").submit(async function (e) {
@@ -52,6 +54,32 @@ $("#join-form").submit(async function (e) {
 $("#leave").click(function (e) {
   leave();
 })
+
+async function switchCamera() {
+    AgoraRTC.getDevices()
+        .then(devices => {
+            const audioDevices = devices.filter(function(device){
+                return device.kind === "audioinput";
+            });
+            const videoDevices = devices.filter(function(device){
+                return device.kind === "videoinput";
+            });
+
+            console.log(audioDevices)
+            console.log(videoDevices)
+            options.videoId = (options.videoId + 1) % 2
+            var selectedMicrophoneId = audioDevices[0].deviceId;
+            var selectedCameraId = videoDevices[options.videoId].deviceId;
+
+            // Switch the camera.
+            localTracks.videoTrack.setDevice(selectedCameraId).then(() => {
+              console.log("set device success");
+            }).catch(e => {
+              console.log("set device error", e);
+            });
+        });
+        console.log("Finished up some stuff");
+}
 
 async function join() {
 
