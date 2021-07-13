@@ -121,7 +121,7 @@ async function leave() {
 
   // remove remote users and player views
   remoteUsers = {};
-  $("#remote-playerlist").html("");
+  $("#playerlist").html("");
 
   // leave the channel
   await client.leave();
@@ -139,12 +139,11 @@ async function subscribe(user, mediaType) {
   console.log("subscribe success");
   if (mediaType === 'video') {
     const player = $(`
-      <div id="player-wrapper-${uid}">
-        <p class="player-name">remoteUser(${uid})</p>
+      <div id="player-wrapper-${uid}" class="player-wrapper">
         <div id="player-${uid}" class="player"></div>
       </div>
     `);
-    $("#remote-playerlist").append(player);
+    $("#playerlist").append(player);
     user.videoTrack.play(`player-${uid}`);
   }
   if (mediaType === 'audio') {

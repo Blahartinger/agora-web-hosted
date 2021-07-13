@@ -30,8 +30,14 @@ input {
 }
 
 .player {
-  width: 480px;
-  height: 320px;
+  width: 60px;
+  height: 60px;
+  corner-radius: 10px;
+  overflow: hidden; 
+}
+
+.player-wrapper {
+
 }
 
 .player-name {
