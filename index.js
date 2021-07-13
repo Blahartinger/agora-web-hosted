@@ -30,34 +30,36 @@ $(() => {
 //  }
 })
 
-$("#join-form").submit(async function (e) {
-  e.preventDefault();
-  $("#join").attr("disabled", true);
-  try {
-    options.appid = $("#appid").val();
-    options.token = $("#token").val();
-    options.channel = $("#channel").val();
-    await join();
-    if(options.token) {
-      $("#success-alert-with-token").css("display", "block");
-    } else {
-      $("#success-alert a").attr("href", `index.html?appid=${options.appid}&channel=${options.channel}&token=${options.token}`);
-      $("#success-alert").css("display", "block");
-    }
-  } catch (error) {
-    console.error(error);
-  } finally {
-    $("#leave").attr("disabled", false);
-  }
-})
+// $("#join-form").submit(async function (e) {
+//   e.preventDefault();
+//   $("#join").attr("disabled", true);
+//   try {
+//     options.appid = $("#appid").val();
+//     options.token = $("#token").val();
+//     options.channel = $("#channel").val();
+//     await join();
+//     if(options.token) {
+//       $("#success-alert-with-token").css("display", "block");
+//     } else {
+//       $("#success-alert a").attr("href", `index.html?appid=${options.appid}&channel=${options.channel}&token=${options.token}`);
+//       $("#success-alert").css("display", "block");
+//     }
+//   } catch (error) {
+//     console.error(error);
+//   } finally {
+//     $("#leave").attr("disabled", false);
+//   }
+// })
 
 $("#join").click(function (e) {
   join();
+  $("#leave").attr("disabled", false);
 })
 
 
 $("#leave").click(function (e) {
   leave();
+  $("#join").attr("disabled", false);
 })
 
 $("#switchCamera").click(function (e) {
