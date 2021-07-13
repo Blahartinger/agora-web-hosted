@@ -55,6 +55,10 @@ $("#leave").click(function (e) {
   leave();
 })
 
+$("#switchCamera").click(function (e) {
+	switchCamera();
+})
+
 async function switchCamera() {
     AgoraRTC.getDevices()
         .then(devices => {
