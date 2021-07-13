@@ -31,13 +31,18 @@ input {
 
 .player {
   width: 60px;
-  height: 60px;
-  corner-radius: 10px;
+  height: 60px; 
+  border-radius: 50%;
   overflow: hidden; 
+  margin: 3px
 }
 
 .player-wrapper {
 
+}
+
+.playerlist {
+    display: contents;
 }
 
 .player-name {
