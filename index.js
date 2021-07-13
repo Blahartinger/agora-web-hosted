@@ -1,5 +1,5 @@
 // create Agora client
-var client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+var client = AgoraRTC.createClient({ mode: "rtc", codec: "h264" });
 
 var localTracks = {
   videoTrack: null,
@@ -93,7 +93,7 @@ async function join() {
     client.join(options.appid, options.channel, options.token || null),
     // create local tracks, using microphone and camera
     AgoraRTC.createMicrophoneAudioTrack(),
-    AgoraRTC.createCameraVideoTrack()
+    AgoraRTC.createCameraVideoTrack({ })
   ]);
   
   // play local video track
