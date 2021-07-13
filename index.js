@@ -51,6 +51,11 @@ $("#join-form").submit(async function (e) {
   }
 })
 
+$("#join").click(function (e) {
+  join();
+})
+
+
 $("#leave").click(function (e) {
   leave();
 })
