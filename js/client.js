@@ -29,8 +29,8 @@ async function start() {
 
     options.appid = urlParams.get('appid');
     options.channel = urlParams.get('channel');
-    options.token = urlParams.get('token');
-    options.uid = parseInt(urlParams.get('uid')) || null;
+    options.token = urlParams.get('token') || null;
+    options.uid = urlParams.get('uid') || null;
 
     await startRecording();
     await joinChannel();
