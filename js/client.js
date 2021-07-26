@@ -29,7 +29,7 @@ async function start() {
 
     options.appid = urlParams.get('appid');
     options.channel = urlParams.get('channel');
-    options.token = urlParams.get('token') || null;
+    options.token = null;
     options.uid = urlParams.get('uid') || null;
 
     await startRecording();
